@@ -1,0 +1,8 @@
+compartment_ocid = ""
+script = "/tmp/testing.side"
+vantage_points = [ "OraclePublic-eu-frankfurt-1" ]
+apm_domain = ""
+monitor_script_parameters = {
+  "searchword" = "testing"
+  "searchword2" = "testing2"
+}
