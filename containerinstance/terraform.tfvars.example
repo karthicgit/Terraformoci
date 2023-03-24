@@ -1,0 +1,6 @@
+compartment_ocid = ""
+tenancy_ocid = ""
+ad_number = 1
+subnet_id=""
+secret_id = ""
+fluentbit_image_url = ""
