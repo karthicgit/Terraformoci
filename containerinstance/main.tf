@@ -139,7 +139,7 @@ resource "oci_kms_key" "kms_key" {
     algorithm = "AES"
     length    = 32
   }
-  management_endpoint = oci_kms_vault.kms_vault.management_endpoint
+  management_endpoint = oci_kms_vault.kms_vault[0].management_endpoint
 
   freeform_tags   = lookup(var.freeform_tags, "key", {})
   protection_mode = var.key_protection_mode
