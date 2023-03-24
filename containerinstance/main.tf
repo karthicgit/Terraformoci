@@ -120,3 +120,28 @@ data "oci_identity_availability_domain" "oci_ad" {
   compartment_id = var.tenancy_ocid
   ad_number      = var.ad_number
 }
+
+#Vault creation
+resource "oci_kms_vault" "kms_vault" {
+  count          = var.createvault ? 1 : 0
+  compartment_id = var.compartment_ocid
+  display_name   = var.vault_display_name
+  vault_type     = var.vault_type
+
+  freeform_tags = lookup(var.freeform_tags, "vault", {})
+}
+
+resource "oci_kms_key" "kms_key" {
+  count          = var.createvault ? 1 : 0
+  compartment_id = var.compartment_ocid
+  display_name   = var.key_display_name
+  key_shape {
+    algorithm = "AES"
+    length    = 32
+  }
+  management_endpoint = oci_kms_vault.kms_vault.management_endpoint
+
+  freeform_tags   = lookup(var.freeform_tags, "key", {})
+  protection_mode = var.key_protection_mode
+}
+
