@@ -70,11 +70,12 @@ resource "oci_container_instances_container_instance" "container_instance" {
   }
 
   graceful_shutdown_timeout_in_seconds = "10"
-  image_pull_secrets {
-    registry_endpoint = var.registry_endpoint
-    secret_type       = "VAULT"
-    secret_id         = var.secret_id
-  }
+  #image pull secret for external registry 
+#   image_pull_secrets {
+#     registry_endpoint = var.registry_endpoint
+#     secret_type       = "VAULT"
+#     secret_id         = var.secret_id
+#   }
 
   state = "ACTIVE"
   volumes {
@@ -111,7 +112,8 @@ resource "oci_identity_policy" "ci_policy" {
 
 locals {
   cisecret_dg = "ALL {resource.type='computecontainerinstance', resource.compartment.id='${var.compartment_ocid}'}"
-  ci_policy   = ["ALLOW DYNAMIC-GROUP ${var.CI_dg} TO read secret-bundles in COMPARTMENT ID ${var.compartment_ocid}"]
+  ci_policy   = ["ALLOW DYNAMIC-GROUP ${var.CI_dg} TO read secret-bundles in COMPARTMENT ID ${var.compartment_ocid}",
+  "ALLOW DYNAMIC-GROUP ${var.CI_dg} TO read repos in COMPARTMENT ID ${var.compartment_ocid}"]
 
 }
 
