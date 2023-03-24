@@ -1,0 +1,8 @@
+provider "oci" {
+  region           = ""
+  fingerprint      = ""
+  private_key_path = ""
+  tenancy_ocid     = ""
+  user_ocid        = ""
+
+}
