@@ -95,7 +95,7 @@ resource "oci_identity_dynamic_group" "ci_dynamic_group" {
   count = var.createdgandpolicy ? 1 : 0
 
   compartment_id = var.tenancy_ocid
-  description    = "Dynamic group for Container instance to read secrets"
+  description    = "Dynamic group for Container instances"
   matching_rule  = local.cisecret_dg
   name           = var.CI_dg
 
@@ -104,7 +104,7 @@ resource "oci_identity_policy" "ci_policy" {
   count = var.createdgandpolicy ? 1 : 0
 
   compartment_id = var.compartment_ocid
-  description    = "Policy for secret access for container instance"
+  description    = "Policy for container instance to read secret and repos"
   name           = "CIsecret"
   statements     = local.ci_policy
 
