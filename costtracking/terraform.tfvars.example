@@ -1,0 +1,6 @@
+compartment_ocid = "<comparment/tenancyocid>"
+tag_values = ["Projecta","Projectb"]
+tags = {
+  freeform_tags = {"key" = "value"}
+  defined_tags = {"key" = "value"}
+}
