@@ -1,0 +1,8 @@
+provider "oci" {
+  region           = "<region>"
+  fingerprint      = "<fingerprint>"
+  private_key_path = "<privatekeypath>"
+  tenancy_ocid = "<tenancy_ocid>"
+  user_ocid    = "user_ocid"
+
+}
