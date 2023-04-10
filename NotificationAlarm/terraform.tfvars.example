@@ -1,0 +1,27 @@
+notification_topic_name = "<topicname>"
+create_topic = true
+compartment_ocid = "<compartment_ocid>"
+alarm_def = {
+  "CIscaleout" = {
+    #metric_compartment = "<metric_compartment if its different from compartment_ocid>"
+    enabled = true
+    namespace = "oci_computecontainerinstance"
+    #In the resourceDisplayName dimension enter the name given for container instance
+    query = "CpuUtilization[1m]{resourceDisplayName = \"CI\"}.grouping().mean() > 80"
+    severity = "CRITICAL"
+    
+  }
+  "CIscalein" = {
+    enabled = true
+    namespace = "oci_computecontainerinstance"
+    query = "CpuUtilization[1m]{resourceDisplayName = \"CI\"}.grouping().mean() < 40"
+    severity="WARNING"
+    #trigger = "PT10M"
+    #To suppress alarm enter the from time ,till time.
+    #For example below one means from currenttime+10minute till currentime+20minute
+    suppression = {
+        time = "10m,20m"
+    }
+  }
+}
+function_id = "<Function_ocid>"
