@@ -29,7 +29,7 @@ variable "alarm_def" {
     enabled            = bool
     namespace          = string
     metric_compartment = optional(string)
-    repeat             = optional(string)
+    repeat             = optional(string,"PT5M")
     trigger            = optional(string,"PT5M")
     suppression        = optional(map(string))
   }))
