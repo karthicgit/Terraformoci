@@ -41,8 +41,8 @@ resource "oci_monitoring_alarm" "alarm" {
   dynamic "suppression" {
     for_each = each.value.suppression != null ? each.value.suppression : {}
     content {
-      time_suppress_from  = timeadd(local.current_time, split(",", suppression.value[0]))
-      time_suppress_until = timeadd(local.current_time, split(",", suppression.value[1]))
+      time_suppress_from  = timeadd(local.current_time, split(",", suppression.value)[0])
+      time_suppress_until = timeadd(local.current_time, split(",", suppression.value)[1])
     }
   }
 
