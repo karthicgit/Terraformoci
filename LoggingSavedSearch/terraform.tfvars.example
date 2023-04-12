@@ -1,0 +1,7 @@
+compartment_ocid = "<compartment_ocid>"
+tenancy_ocid = "<tenancy_ocid>"
+#Default value for create_dg is false
+create_dg = true
+#Default value for create_policy is false
+create_policy = true
+saved_search_id = "<savedsearch_id>"
