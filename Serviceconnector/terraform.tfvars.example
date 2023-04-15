@@ -1,0 +1,17 @@
+compartment_ocid = "<compartment ocid>"
+tenancy_ocid = "<tenancy ocid>"
+#Required if sch_source = "streaming" default sch_source is logging
+#stream_id = "<stream_ocid>"
+
+#Reference for service log definition https://github.com/oracle-terraform-modules/terraform-oci-logging/blob/main/terraform.tfvars.example
+service_logdef = {
+  "vcnlog" = {
+    enable = false
+    loggroup = "<OCI Logging loggroup to be created>"
+    service = "flowlogs"
+    resource = "<existing subnetname>"
+  }
+}
+#default is false for both create_dg and create_policy
+create_dg = true
+create_policy = true
