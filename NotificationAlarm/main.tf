@@ -14,10 +14,10 @@ locals {
   current_time = timestamp()
 }
 
-resource "oci_ons_subscription" "func_subscription" {
+resource "oci_ons_subscription" "this_subscription" {
   compartment_id = var.compartment_ocid
-  endpoint       = var.function_id
-  protocol       = "ORACLE_FUNCTIONS"
+  endpoint       = var.endpoint
+  protocol       = var.protocol
   topic_id       = local.topic
 
 
