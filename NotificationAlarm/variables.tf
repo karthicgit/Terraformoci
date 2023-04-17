@@ -35,7 +35,12 @@ variable "alarm_def" {
   }))
 }
 
-variable "function_id" {
+variable "protocol" {
   type        = string
-  description = "Existing Function OCID"
+  description = "Protocol for Subscription"
+}
+
+variable "endpoint" {
+  type        = string
+  description = "Subscription endpoint"
 }
