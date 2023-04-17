@@ -24,4 +24,5 @@ alarm_def = {
     }
   }
 }
-function_id = "<Function_ocid>"
+endpoint = "<Function_ocid>"
+protocol = "ORACLE_FUNCTIONS"
