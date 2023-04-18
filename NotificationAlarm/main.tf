@@ -15,6 +15,7 @@ locals {
 }
 
 resource "oci_ons_subscription" "this_subscription" {
+  count = var.create_subscription ? 1 : 0
   compartment_id = var.compartment_ocid
   endpoint       = var.endpoint
   protocol       = var.protocol
