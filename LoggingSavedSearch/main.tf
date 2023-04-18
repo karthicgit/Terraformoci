@@ -2,12 +2,12 @@ locals {
   policy_compartment_id = var.policy_compartment_id == null ? var.compartment_ocid : var.policy_compartment_id
   compartment_name      = data.oci_identity_compartment.this_compartment.name
   dg_rule               = "ALL {resource.type='loganalyticsscheduledtask', resource.compartment.id='${var.compartment_ocid}'}"
-  savedsearch_policy = ["allow dynamic-group ${var.dynamic_group_name} to use metrics in compartment ${local.compartment_name}",
-    "allow dynamic-group ${var.dynamic_group_name} to read management-saved-search in compartment ${local.compartment_name}",
-    "allow dynamic-group ${var.dynamic_group_name} to {LOG_ANALYTICS_QUERY_VIEW} in compartment ${local.compartment_name}",
-    "allow dynamic-group ${var.dynamic_group_name} to {LOG_ANALYTICS_QUERYJOB_WORK_REQUEST_READ} in compartment ${local.compartment_name}",
-    "allow dynamic-group ${var.dynamic_group_name} to READ loganalytics-log-group in compartment ${local.compartment_name}",
-  "allow dynamic-group ${var.dynamic_group_name} to read compartments in compartment ${local.compartment_name}"]
+  savedsearch_policy = ["allow dynamic-group ${var.dynamic_group_name} to use metrics in tenancy",
+    "allow dynamic-group ${var.dynamic_group_name} to read management-saved-search in tenancy",
+    "allow dynamic-group ${var.dynamic_group_name} to {LOG_ANALYTICS_QUERY_VIEW} in tenancy",
+    "allow dynamic-group ${var.dynamic_group_name} to {LOG_ANALYTICS_QUERYJOB_WORK_REQUEST_READ} in tenancy",
+    "allow dynamic-group ${var.dynamic_group_name} to READ loganalytics-log-group in tenancy",
+  "allow dynamic-group ${var.dynamic_group_name} to read compartments in tenancy"]
 }
 
 
@@ -23,7 +23,7 @@ resource "oci_identity_dynamic_group" "savedsearch_dynamic_group" {
 resource "oci_identity_policy" "savedsearch_policy" {
   count = var.create_policy ? 1 : 0
 
-  compartment_id = local.policy_compartment_id
+  compartment_id = var.tenancy_ocid
   description    = "Policy for savedsearch in Logging analytics"
   name           = var.policy_name
   statements     = local.savedsearch_policy
