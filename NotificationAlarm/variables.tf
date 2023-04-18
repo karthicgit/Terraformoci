@@ -29,13 +29,13 @@ variable "tags" {
 
 variable "alarm_def" {
   type = map(object({
-    severity           = string
+    severity           = optional(string, "CRITICAL")
     query              = string
-    enabled            = bool
+    enabled            = optional(bool, true)
     namespace          = string
     metric_compartment = optional(string)
-    repeat             = optional(string,"PT5M")
-    trigger            = optional(string,"PT5M")
+    repeat             = optional(string, "PT5M")
+    trigger            = optional(string, "PT5M")
     suppression        = optional(map(string))
   }))
 }
