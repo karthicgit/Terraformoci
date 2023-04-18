@@ -8,8 +8,6 @@ alarm_def = {
     namespace = "oci_computecontainerinstance"
     #In the resourceDisplayName dimension enter the name given for container instance
     query = "CpuUtilization[1m]{resourceDisplayName = \"CI\"}.grouping().mean() > 80"
-    severity = "CRITICAL"
-    
   }
   "CIscalein" = {
     enabled = true
