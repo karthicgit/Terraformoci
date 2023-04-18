@@ -13,6 +13,11 @@ variable "create_topic" {
   type    = bool
 }
 
+variable "create_subscription" {
+  default = true
+  type = bool
+}
+
 variable "tags" {
   type = map(any)
   default = {
