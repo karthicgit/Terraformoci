@@ -4,8 +4,8 @@ resource "oci_ons_notification_topic" "this_topic" {
   name           = var.notification_topic_name
 
   description   = "Notification Topic"
-  defined_tags  = lookup(var.tags, "defined_tags", {})
-  freeform_tags = lookup(var.tags, "freeform_tags", {})
+  defined_tags  = lookup(var.tags, "defined_tags", null)
+  freeform_tags = lookup(var.tags, "freeform_tags", null)
 
 }
 
@@ -22,8 +22,8 @@ resource "oci_ons_subscription" "this_subscription" {
   topic_id       = local.topic
 
 
-  defined_tags  = lookup(var.tags, "defined_tags", {})
-  freeform_tags = lookup(var.tags, "freeform_tags", {})
+  defined_tags  = lookup(var.tags, "defined_tags", null)
+  freeform_tags = lookup(var.tags, "freeform_tags", null)
 }
 
 resource "oci_monitoring_alarm" "alarm" {
