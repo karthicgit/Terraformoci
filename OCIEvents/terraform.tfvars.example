@@ -1,0 +1,39 @@
+compartment_id = "<compartment_ocid>"
+rule_configs = {
+  "bucket_rule" = {
+    actions = {
+      actions = [{
+        action_type = "ONS"
+        is_enabled  = true
+        topic_id    = "<topic_ocid>"
+      },
+      {
+        action_type = "OSS"
+        is_enabled = true
+        stream_id = "<stream_ocid>"
+      },
+      {
+        action_type = "FAAS"
+        is_enabled = true
+        function_id = "<function_ocid>"
+      }]
+    }
+    condition    = "{\"eventType\": [\"com.oraclecloud.objectstorage.deletebucket\",\"com.oraclecloud.objectstorage.createbucket\"],\"data\": {\"resourceName\": \"<bucketname>\"}}"
+    display_name = "Bucket_rule"
+    is_enabled   = true
+    description  = "Bucket create and delete action on specific bucket"
+  }
+  "compute_rule" = {
+    actions = {
+      actions = [{
+        action_type = "ONS"
+        is_enabled  = true
+        topic_id    = "<topic_ocid>"
+      }]
+    }
+    condition    = "{\"eventType\": [\"com.oraclecloud.computeapi.launchinstance.begin\",\"com.oraclecloud.computeapi.terminateinstance.begin\"]}"
+    display_name = "Instance_rule"
+    is_enabled   = true
+    description  = "Instance launch and terminate action"
+  }
+}
