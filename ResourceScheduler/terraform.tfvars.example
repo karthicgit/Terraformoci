@@ -1,0 +1,53 @@
+schedules = {
+  schedule1 = {
+    action = "START_RESOURCE"
+    compartment_id = "<tenancy_ocid>"
+    recurrence_details = "30 19 * * *"
+    recurrence_type = "CRON"
+    description = "creating schedule via tf"
+
+    display_name = "tf_dynamic_schedule"
+
+    resource_filters = [
+      {
+        attribute = "LIFECYCLE_STATE"
+        values = [
+          {
+            value = "RUNNING"
+          }
+        ]
+      },
+      {
+        attribute = "RESOURCE_TYPE"
+        values = [
+          {
+            value = "Instance"
+          }
+        ]
+      }
+    ]
+
+    time_ends = "2024-07-31T20:00:00Z"
+    time_starts = "2024-07-30T19:00:00Z"
+  }
+  schedule2 = {
+    action = "STOP_RESOURCE"
+    compartment_id = "<tenancy_ocid>"
+    recurrence_details = "30 19 * * *"
+    recurrence_type = "CRON"
+    description = "creating schedule via tf"
+
+    display_name = "tf_static_schedule"
+
+    resources = [
+      {
+        id = "<resource_ocid>"
+        metadata = null
+      }
+    ]
+
+    time_ends = "2024-07-31T20:00:00Z"
+    time_starts = "2024-07-30T19:00:00Z"
+  }
+
+}
