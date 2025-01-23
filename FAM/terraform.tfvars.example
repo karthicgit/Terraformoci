@@ -1,0 +1,14 @@
+rule_conditions = {
+  conditions = [ {
+    attr_group = "Oracle_Tags"
+    attr_key = "CreatedBy"
+    attr_value = "username"
+  }
+]
+}
+
+resources = ["<dbsystem_ocid>"]
+fleet_display_name = "<display_name>"
+compartment_id = "<compartment_ocid>"
+tenancy_id = "<tenancy_ocid>"
+topic_id  = "<topic_ocid>"
