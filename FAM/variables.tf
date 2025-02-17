@@ -25,6 +25,8 @@ variable "resources" {
   
 }
 
+variable "resource_type" {}
+
 variable "rule_conditions" {
   type = object({
     conditions = list(object({
