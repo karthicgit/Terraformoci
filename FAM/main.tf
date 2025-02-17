@@ -32,5 +32,6 @@ resource "oci_fleet_apps_management_fleet_resource" "product_fleet_resource" {
     fleet_id = oci_fleet_apps_management_fleet.product_fleet[0].id
     resource_id = each.value
     tenancy_id = var.tenancy_id
+    resource_type = var.resource_type
 
 }
