@@ -8,7 +8,7 @@ Create terraform.tfvars to pass the required inputs.
 
 Please specify the appropriate provider authentication if you are running outside OCI cloud shell.
 
-The required policies for service connector hub is not part of this example code.
+The required policies for service connector hub or streaming is not part of this example code.
 
 Reference doc : https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/connector-hub/create-service-connector-streaming-source.htm#stream-private
 
