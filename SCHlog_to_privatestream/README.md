@@ -11,4 +11,5 @@ Please specify the appropriate provider authentication if you are running outsid
 The required policies for service connector hub is not part of this example code.
 
 Reference doc : https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/connector-hub/create-service-connector-streaming-source.htm#stream-private
-https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/connector-hub/create-service-connector-streaming-source.htm#ingress-egress
+
+  https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/connector-hub/create-service-connector-streaming-source.htm#ingress-egress
