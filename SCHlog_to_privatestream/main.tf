@@ -75,7 +75,6 @@ resource "oci_sch_service_connector" "test_service_connector" {
 
 
 locals {
-    rce_dns = "${oci_sch_service_connector.test_service_connector.target[0].private_endpoint_metadata[0].rce_dns_proxy_ip_address}/32"
     rce_traffic =  "${oci_sch_service_connector.test_service_connector.target[0].private_endpoint_metadata[0].rce_traffic_ip_address}/32"
     stream_private_ip = "${oci_streaming_stream_pool.test_stream_pool.private_endpoint_settings[0].private_endpoint_ip}/32"
 }
@@ -87,14 +86,6 @@ resource "oci_core_network_security_group_security_rule" "test_network_security_
   direction                 = "INGRESS"
   source              = local.rce_traffic
   protocol                  = "6"
-}
-
-resource "oci_core_network_security_group_security_rule" "test_network_security_group_security_rule_2" {
-  network_security_group_id = oci_core_network_security_group.test_nsg.id
-
-  direction   = "INGRESS"
-  protocol    = "17"
-  source = local.rce_dns
 }
 
 resource "oci_core_network_security_group_security_rule" "test_network_security_group_security_rule_3" {
