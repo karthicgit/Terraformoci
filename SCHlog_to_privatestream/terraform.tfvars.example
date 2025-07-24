@@ -1,0 +1,31 @@
+# Example terraform.tfvars file
+
+# Compartment OCID
+compartment_id = "ocid1.compartment.oc1..<unique_ID>"
+
+# VCN OCID
+vcn_id = "ocid1.vcn.oc1..<unique_ID>"
+
+# Subnet OCID
+subnet_id = "ocid1.subnet.oc1..<unique_ID>"
+
+# Stream Pool Name
+streampool_name = "example-stream-pool"
+
+# Stream Partitions
+stream_partitions = 1
+
+# Stream Retention in Hours
+stream_retention_in_hours = 24
+
+# Stream Defined Tags
+stream_defined_tags = {
+  "example-tag-namespace" = {
+    "example-tag-key" = "example-tag-value"
+  }
+}
+
+# Stream Freeform Tags
+stream_freeform_tags = {
+  "example-freeform-tag-key" = "example-freeform-tag-value"
+}
