@@ -5,7 +5,7 @@ provider "oci" {
 terraform {
   required_providers {
     oci = {
-      version = ">= 6.34.0"
+      version = ">= 7.2.0"
       source = "oracle/oci"
     }
   }
@@ -44,8 +44,14 @@ resource "oci_streaming_stream" "test_stream" {
 variable "stream_partitions" {}
 variable "compartment_id" {}
 variable "stream_retention_in_hours" {}
-variable "stream_defined_tags" {}
-variable "stream_freeform_tags" {}
+variable "stream_defined_tags" {
+    type = map(string)
+    default = {}
+}
+variable "stream_freeform_tags" {
+    type = map(string)
+    default = {}
+}
 
 
 resource "oci_core_network_security_group" "test_nsg" {
@@ -88,7 +94,7 @@ resource "oci_core_network_security_group_security_rule" "test_network_security_
   protocol                  = "6"
 }
 
-resource "oci_core_network_security_group_security_rule" "test_network_security_group_security_rule_3" {
+resource "oci_core_network_security_group_security_rule" "test_network_security_group_security_rule_2" {
   network_security_group_id = oci_core_network_security_group.test_nsg.id
 
   direction   = "EGRESS"
